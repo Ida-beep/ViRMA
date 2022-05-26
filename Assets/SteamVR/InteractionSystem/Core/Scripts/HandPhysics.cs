@@ -26,7 +26,7 @@ namespace Valve.VR.InteractionSystem
         // distance at which hand will teleport back to controller
         const float handResetDistance = 0.6f;
 
-        const float collisionReenableClearanceRadius = 0.1f;
+        const float collisionReenableClearanceRadius = 0.1f; // 0.1 initially
 
         private bool initialized = false;
 
@@ -43,7 +43,9 @@ namespace Valve.VR.InteractionSystem
             Quaternion localRotation = handCollider.transform.localRotation;
 
             handCollider.transform.parent = Player.instance.transform;
-            handCollider.transform.localPosition = localPosition;
+            handCollider.transform.localScale = new Vector3(1.5f,1.5f,1.5f); // Added later 
+            // handCollider.transform.localPosition = localPosition; ORIGINAL
+            handCollider.transform.localPosition = localPosition - new Vector3(0.0f,1.0f,0.0f); // added Later
             handCollider.transform.localRotation = localRotation;
             handCollider.hand = this;
 

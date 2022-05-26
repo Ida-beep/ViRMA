@@ -9,6 +9,7 @@ using Valve.VR;
 public class ViRMA_MainMenu : MonoBehaviour
 {
     private ViRMA_GlobalsAndActions globals;
+    public bool helpActive;
     private List<GameObject> menuSections;
     private Vector3 mainMenuPosition;
     private float mainMenuAngle;
@@ -743,6 +744,10 @@ public class ViRMA_MainMenu : MonoBehaviour
             {
                 customMenuBtn.GetComponent<ViRMA_UiElement>().GenerateBtnDefaults(ViRMA_Colors.flatOrange, Color.white);
             }
+            /* if (customMenuBtn.name == "MainHelpBtn")
+            {
+                customMenuBtn.GetComponent<ViRMA_UiElement>().GenerateBtnDefaults(ViRMA_Colors.flatOrange, Color.white);
+            } */
         }
     }
     public void SubmitCustomMenuBtn(GameObject customMenuBtn)
@@ -771,6 +776,11 @@ public class ViRMA_MainMenu : MonoBehaviour
         {
             // clear location list
         }
+        /* if (customMenuBtn.name == "MainHelpBtn")
+        {
+            helpActive = !helpActive;
+            Debug.Log("inside main menu toggle, help is active? : " + helpActive);
+        } */
     }
     private void MainMenuRepositioning()
     {

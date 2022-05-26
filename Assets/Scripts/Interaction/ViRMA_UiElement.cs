@@ -158,10 +158,12 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 	// general
 	private void SetKeyColliderSize()
 	{
-		float width = btn.GetComponent<RectTransform>().rect.width;
-		float height = btn.GetComponent<RectTransform>().rect.height;
+		float width = btn.GetComponent<RectTransform>().rect.width + 1000;
+		float height = btn.GetComponent<RectTransform>().rect.height + 1000;
+		float depth = 25;
 		col = btn.gameObject.GetComponentInChildren<BoxCollider>();
-		col.size = new Vector3(width, height, 25);
+		col.size = new Vector3(width, height, depth); // before test = 25, tested value = 500 to increase sensitivity
+		//Debug.Log("height = " + height + ", and width = " + width); // TEST
 	}
 	public void Hide(bool toHide)
     {

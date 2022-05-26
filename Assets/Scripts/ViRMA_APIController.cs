@@ -350,8 +350,8 @@ public class ViRMA_APIController : MonoBehaviour
     //public static string imagesDirectory = System.IO.Directory.GetCurrentDirectory().ToString() + "/LaugavegurDataDDS/"; 
     //public static string imagesDirectory = "C:/Users/aaron/Documents/Unity Projects/ViRMA/LaugavegurDataDDS/"; 
 
-    public static string imagesDirectory = System.IO.Directory.GetCurrentDirectory().ToString() + "/../LSC2021/";
-    //public static string imagesDirectory = "C:/Users/aaron/Documents/Unity Projects/LSC2021/"; 
+    public static string imagesDirectory = "C:/Users/ViRMA/Desktop/virma17/ViRMA/LSC2021/";
+    //public static string imagesDirectory = "C:/Users/aaron/Documents/Unity Projects/LSC½2021/"; 
 
     // private
     private static JSONNode jsonData;
@@ -858,6 +858,7 @@ public class ViRMA_APIController : MonoBehaviour
         string url = "cell?filters=[{'type':'daterange','ids':['2'],'ranges':[['" + past.ToString("dd-MM-yyyy") + "','" + future.ToString("dd-MM-yyyy") + "']]},{'type':'timerange','ids':['3'],'ranges':[['" + past.ToString("HH:mm") + "','" + future.ToString("HH:mm") + "']]}]&all=[]";
 
         //Debug.Log(url); // testing
+        Debug.Log("GetTimeline: " + url); // debugging
 
         List<KeyValuePair<int, string>> results = new List<KeyValuePair<int, string>>();
         yield return GetRequest(url, (response) =>
