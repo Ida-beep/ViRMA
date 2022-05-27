@@ -51,6 +51,7 @@ public class ViRMA_Cell : MonoBehaviour
             globals.vizController.focusedCell = gameObject;
 
             globals.ToggleControllerFade(triggeredCol.GetComponent<ViRMA_Drumstick>().hand, true);
+
         }
     }
 

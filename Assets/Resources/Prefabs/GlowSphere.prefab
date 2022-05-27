@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5040196534069169354}
   - component: {fileID: 5222878382128717614}
   - component: {fileID: 8329058173634409967}
-  - component: {fileID: 8005656895800233144}
+  - component: {fileID: 5697703589654150963}
   m_Layer: 0
   m_Name: GlowSphere
   m_TagString: Untagged
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8005656895800233144
+--- !u!114 &5697703589654150963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,6 +167,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4211196067562437964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba11e48cb6920d4daa04e644ceac29a, type: 3}
+  m_Script: {fileID: 11500000, guid: ba152415a14e1e046982e325d197304d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

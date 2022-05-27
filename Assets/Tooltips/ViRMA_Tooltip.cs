@@ -11,20 +11,12 @@ public class ViRMA_Tooltip : MonoBehaviour
     public ViRMA_Glow glow;
     public Canvas labelCanvas;
     public GameObject labelPrefab;
-    //public ViRMA_Textbox textbox;
     public ViRMA_UiElement mainHelpBtn;
     public bool helpIsActive;
-    //public ViRMA_ActionSet_Explainer actionSetExplainer;
-    //private Vector3 testposition;
 
-    void Awake()
+    void Start()
     {
         SetupHelpBtn();
-
-    }
-
-    void Update()
-    {
 
     }
 
@@ -59,7 +51,6 @@ public class ViRMA_Tooltip : MonoBehaviour
 
     void ToggleHelp(){
         helpIsActive = !helpIsActive;
-
     }
 
 }
