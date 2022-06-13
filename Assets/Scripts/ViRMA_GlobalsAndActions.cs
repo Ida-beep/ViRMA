@@ -6,7 +6,7 @@ using System;
 public class ViRMA_GlobalsAndActions : MonoBehaviour
 {
     // global scripts
-    
+    public ViRMA_Help help;
     public ViRMA_VizController vizController;
     public ViRMA_QueryController queryController;
     public ViRMA_DimExplorer dimExplorer;

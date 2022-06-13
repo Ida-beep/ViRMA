@@ -13,13 +13,14 @@ public class ViRMA_Inline : MonoBehaviour
     private Collider col;
     public bool showLabel;
 
-    public void SetInline(ViRMA_UiElement newUiElement, Vector3 newDescriptionPosition, string newDescription, Canvas labelCanvas){
+    public void SetInline(ViRMA_UiElement newUiElement, Vector3 positionOffset, string newDescription){
         var newInlineFolder = new GameObject("InlineHelpItem");
+        /* Debug.Log(newUiElement.highlighting); */
         newInlineFolder.transform.parent = newUiElement.transform;
         newInlineFolder.transform.localScale = new Vector3(1, 1, 1);
-        newInlineFolder.transform.localPosition = newDescriptionPosition; // moves the entire folder off to one side, should be parametized
+        newInlineFolder.transform.localPosition = positionOffset; // moves the entire folder off to one side, should be parametized
         
-        label.MakeLabel(newInlineFolder, newDescriptionPosition, newDescription);
+        label.MakeLabel(newInlineFolder, positionOffset, newDescription);
         testSphere = sphere.MakeSphere(newInlineFolder,newUiElement /* newLabel */);
     }
 

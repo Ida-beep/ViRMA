@@ -62,6 +62,8 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 		}
 
 		GenerateBtnDefaults(ViRMA_Colors.darkBlue, Color.white);
+		// To Remove Highlight on Hover for all UI elements
+		gameObject.GetComponent<Interactable>().highlightOnHover = false;
 	}
 
     private void Start()

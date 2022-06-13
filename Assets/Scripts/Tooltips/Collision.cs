@@ -18,7 +18,7 @@ public class Collision : MonoBehaviour
     }
 
     private void Update() {
-        Debug.Log("Colliding on some sphere : " + isColliding + " gameobject: " + gameObject);
+        //Debug.Log("Colliding on some sphere : " + isColliding + " gameobject: " + gameObject);
     }
 
     void OnTriggerEnter(Collider col){
