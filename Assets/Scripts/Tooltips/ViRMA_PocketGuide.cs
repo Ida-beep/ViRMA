@@ -20,7 +20,7 @@ TO DO:
 public class ViRMA_PocketGuide : MonoBehaviour
 {
     ViRMA_GlobalsAndActions globals;
-    public ViRMA_Tooltip tooltip;
+    public ViRMA_Help help;
     public ViRMA_InstructionFormat format;
     public ViRMA_ActionSet_Explainer actionSetExplainer;
     public GameObject exitTextBoxBtn;
@@ -52,7 +52,7 @@ public class ViRMA_PocketGuide : MonoBehaviour
 
     void Update()
     {
-        if(actionSetExplainer.showTextBox && tooltip.helpIsActive){
+        if(actionSetExplainer.showTextBox && help.helpIsActive){
             ActivateTextBox();
         } else {
             DeactivateTextBox();
@@ -61,7 +61,7 @@ public class ViRMA_PocketGuide : MonoBehaviour
 
     void ActivateTextBox()
     {
-        //if ( tooltip.helpIsActive){
+        //if ( help.helpIsActive){
             fadeIn();
             // Specify position and rotation of the panel
             canvas.transform.position = controller.position + new Vector3(xPosition,yPosition,zPosition);

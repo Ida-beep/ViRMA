@@ -20,7 +20,7 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     float fadeInOutTime = 0.0f;
     public GameObject controllerHelpBtn;
     //public bool controllerHelpbtnActive = false;
-    public ViRMA_Tooltip tooltip;
+    public ViRMA_Help help;
     public bool showTextBox;
 
 
@@ -65,7 +65,7 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     * Checks if the user is looking down while HELP is active
     */
     void CheckIsLookingDown(){
-        if(( Vector3.Dot( headTransform.forward, Vector3.down ) > 0.466f)&& tooltip.helpIsActive){
+        if(( Vector3.Dot( headTransform.forward, Vector3.down ) > 0.466f)&& help.helpIsActive){
             playerIsLookingDown = true;
         } else {
             playerIsLookingDown = false;

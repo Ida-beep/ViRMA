@@ -6,7 +6,7 @@ using Valve.VR.InteractionSystem;
 using TMPro;
 using Valve.VR;
 
-public class ViRMA_Tooltip : MonoBehaviour
+public class ViRMA_Help : MonoBehaviour
 {
     public ViRMA_Inline inline;
     //public Canvas labelCanvas;
