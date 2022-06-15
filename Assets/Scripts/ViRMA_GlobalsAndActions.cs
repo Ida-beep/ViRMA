@@ -33,6 +33,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
     public SteamVR_Action_Boolean menuInteraction_Select;
     public SteamVR_Action_Boolean menuInteraction_MenuControl;
     public SteamVR_Action_Vector2 menuInteraction_Scroll;
+    public SteamVR_Action_Boolean menuInteraction_OpenClose;
 
     // viz actions
     public SteamVR_ActionSet vizNavActions;
@@ -104,6 +105,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         menuInteraction_Select = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/MenuInteraction/in/Select");
         menuInteraction_MenuControl = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/MenuInteraction/in/MenuControl");
         menuInteraction_Scroll = SteamVR_Input.GetActionFromPath<SteamVR_Action_Vector2>("/actions/MenuInteraction/in/Scroll");
+        menuInteraction_OpenClose = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/MenuInteraction/in/OpenClosePocketGuide"); //SIG
 
         // viz navigation action set
         vizNavActions = SteamVR_Input.GetActionSet("VizNavigation");
@@ -127,12 +129,14 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         helpActions = SteamVR_Input.GetActionSet("Help");
         help_Close = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Help/in/Close");
     }
+
     private void AssignAllCustomActions()
     {
         // --- SteamVR custom action assignments --- \\
 
         // menu interaction
         menuInteraction_MenuControl[SteamVR_Input_Sources.Any].onStateDown += mainMenu.ToggleMainMenuAlias;
+        menuInteraction_OpenClose[SteamVR_Input_Sources.Any].onStateDown += help.actionSetExplainer.TogglePocketGuide;
 
         // viz controller
         vizNav_Select[SteamVR_Input_Sources.Any].onStateDown += vizController.SubmitCellForTimeline;
@@ -160,6 +164,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         defaultActions.Activate();
         targetActionSet.Activate();
     }
+
     private void ActionActivityController()
     {
         if(help.welcome.active){

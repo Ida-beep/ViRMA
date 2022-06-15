@@ -61,7 +61,7 @@ public class ViRMA_PocketGuide : MonoBehaviour
 
     void Update()
     {
-        if(actionSetExplainer.showTextBox && help.helpIsActive){
+        if(actionSetExplainer.showPocketGuide && help.helpIsActive){
             ActivateTextBox();
         } else {
             DeactivateTextBox();
@@ -160,6 +160,6 @@ public class ViRMA_PocketGuide : MonoBehaviour
     }
 
     void ExitTextBox(){
-        actionSetExplainer.showTextBox = false;
+        actionSetExplainer.showPocketGuide = false;
     }
 }

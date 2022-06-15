@@ -86,6 +86,10 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/MenuInteraction/in/OpenClosePocketGuide",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/DimExplorer/in/Select",
       "type": "boolean"
     },

@@ -11,6 +11,7 @@ public class ViRMA_Help : MonoBehaviour
     public ViRMA_Inline inline;
     public ViRMA_UiElement mainHelpBtn;
     public ViRMA_Welcome welcome;
+    public ViRMA_ActionSet_Explainer actionSetExplainer;
     public bool helpIsActive; 
 
     void Start()
@@ -27,14 +28,14 @@ public class ViRMA_Help : MonoBehaviour
     }
 
     // TEXT BOX : Creating Panels with text attached to controller 
-    void CreateToolTip(string title, string text){
+    /* void CreateToolTip(string title, string text){
         Debug.Log("create controller panel");
-    }
+    } */
 
     // TEXT BOX : Text box triggered by hover on UI-element 
-    void CreateToolTip(string title, string text, ViRMA_UiElement uielement){
+    /* void CreateToolTip(string title, string text, ViRMA_UiElement uielement){
         Debug.Log("create controller panel");
-    }
+    } */
 
     // LABEL : Adding label in 3D space 
     /* void CreateToolTip(string label, Vector3 placement){
@@ -43,9 +44,9 @@ public class ViRMA_Help : MonoBehaviour
     } */
 
     // ACTIONSET EXPLANATION : Controller mappings, depending on certain actionset
-    void CreateToolTip(string actionSetName, string explanation, string button){
+    /* void CreateToolTip(string actionSetName, string explanation, string button){
         Debug.Log("create controller mapping explanation");
-    }
+    } */
 
     void SetupHelpBtn()
     {
@@ -53,7 +54,6 @@ public class ViRMA_Help : MonoBehaviour
         //var helpbtnCanvas = mainHelpBtn.GetComponentInParent<Canvas>();
         inline.SetInline(mainHelpBtn,new Vector3(-80,60,0),"Click here to get a little more help!"/* ,helpbtnCanvas */);
     }
-
 
 
     void ToggleHelp(){
@@ -65,6 +65,11 @@ public class ViRMA_Help : MonoBehaviour
             mainHelpBtn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Help OFF";
         }
     }
+
+    /* public void TogglePocketGuide(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
+    {
+       Debug.Log("assigned the method to btn push!");
+    } */
 
 }
 

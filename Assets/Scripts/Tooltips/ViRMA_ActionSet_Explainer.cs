@@ -21,7 +21,7 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     public GameObject controllerHelpBtn;
     //public bool controllerHelpbtnActive = false;
     public ViRMA_Help help;
-    public bool showTextBox;
+    public bool showPocketGuide;
 
     public GameObject triggerLeftLine;
     public GameObject triggerRightLine;
@@ -35,7 +35,7 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     void Start()
     {
         globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
-        SetupTextBoxBtn();
+        //SetupTextBoxBtn();
         canvas_right.GetComponent<CanvasGroup>().alpha = 0;
         canvas_left.GetComponent<CanvasGroup>().alpha = 0;
         SetDefaultActionDetails();
@@ -98,8 +98,15 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     }
 
     void ToggleTextBox(){
-        showTextBox = !showTextBox;
+        showPocketGuide = !showPocketGuide;
     }
+
+    public void TogglePocketGuide(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
+    {
+       showPocketGuide = !showPocketGuide;
+    }
+
+
 
 
     void SetDefaultActionDetails(){

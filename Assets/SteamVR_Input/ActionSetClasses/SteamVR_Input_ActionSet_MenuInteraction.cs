@@ -40,5 +40,13 @@ namespace Valve.VR
                 return SteamVR_Actions.menuInteraction_Scroll;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean OpenClosePocketGuide
+        {
+            get
+            {
+                return SteamVR_Actions.menuInteraction_OpenClosePocketGuide;
+            }
+        }
     }
 }
