@@ -5,6 +5,7 @@ using TMPro;
 
 public class Collision : MonoBehaviour
 {
+    public ViRMA_Help help;
     public bool isColliding = false;
     private Color onHoverColor;
     private Color hideColor;
@@ -15,10 +16,6 @@ public class Collision : MonoBehaviour
         hideColor = new Color32(0,0,255,0);
         labelText = gameObject.transform.parent.gameObject.GetComponentInChildren<TextMeshPro>();
         labelText.color = hideColor;
-    }
-
-    private void Update() {
-        //Debug.Log("Colliding on some sphere : " + isColliding + " gameobject: " + gameObject);
     }
 
     void OnTriggerEnter(Collider col){

@@ -91,6 +91,8 @@ public class ViRMA_Keyboard : MonoBehaviour
             {
                 bgCol = new Color32(192, 57, 43, 255);
                 textCol = Color.white;
+                globals.help.inline.SetInline(virmaBtn,new Vector3(50,0,0), "Close search and view browsing state");
+
             }
             else if (key.name == "BACKSPACE")
             {

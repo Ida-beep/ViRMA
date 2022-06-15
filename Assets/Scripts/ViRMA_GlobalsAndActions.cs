@@ -52,6 +52,10 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
     public SteamVR_Action_Boolean timeline_Scroll;
     public SteamVR_Action_Boolean timeline_Back;
 
+    // help actions
+    public SteamVR_ActionSet helpActions;
+    public SteamVR_Action_Boolean help_Close;
+
     private void Awake()
     {
         // assign all global scripts
@@ -60,6 +64,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         dimExplorer = GameObject.Find("DimensionExplorer").GetComponent<ViRMA_DimExplorer>();
         mainMenu = GameObject.Find("MainMenu").GetComponent<ViRMA_MainMenu>();
         timeline = GameObject.Find("Timeline").GetComponent<ViRMA_Timeline>();
+        help = GameObject.Find("Help").GetComponent<ViRMA_Help>();
 
         // assign all action sets
         AssignAllActionSets();
@@ -117,6 +122,10 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         timeline_Select = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Timeline/in/Select");
         timeline_Scroll = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Timeline/in/Scroll");
         timeline_Back = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Timeline/in/Back");
+
+        //help action set
+        helpActions = SteamVR_Input.GetActionSet("Help");
+        help_Close = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Help/in/Close");
     }
     private void AssignAllCustomActions()
     {
@@ -139,6 +148,8 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         timeline_Select[SteamVR_Input_Sources.Any].onStateDown += timeline.SubmitContextMenuBtn;
         timeline_Back[SteamVR_Input_Sources.Any].onStateDown += timeline.BackButton;
 
+        //help_Close[SteamVR_Input_Sources.Any].onStateDown += help.welcome.DeactivateWelcome;
+
         // testing
         //menuInteraction_Scroll[SteamVR_Input_Sources.Any].onAxis += mainMenu.TestScroll;
         //vizNav_HardGrip[SteamVR_Input_Sources.Any].onAxis += TestGripAction;
@@ -151,7 +162,10 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
     }
     private void ActionActivityController()
     {
-        
+        if(help.welcome.active){
+            helpActions.Activate();
+        }
+
         if (dimExplorer.dimensionExpLorerLoaded)
         {
             dimExplorerActions.Activate();
@@ -162,22 +176,16 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
             vizNavActions.Activate();
             dimExplorerActions.Deactivate();
         }
-
-
         if (dimExplorer.dimExKeyboard.keyboardLoaded)
         {
             dimExplorerActions.Activate();
             vizNavActions.Deactivate();
         }
-
-
         if (dimExplorer.dimExKeyboard.keyboardMoving)
         {   
             dimExplorerActions.Deactivate();
             vizNavActions.Deactivate();
         }
-
-
         if (timeline.timelineLoaded)
         {
             timelineActions.Activate();    
@@ -188,6 +196,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         }
 
         menuInteractionActions.Activate();
+        //Debug.Log("help is active? : " + helpActions.IsActive() + ", and main menu is ...:" +  menuInteractionActions.IsActive());
 
 
         // debugging

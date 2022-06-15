@@ -8,11 +8,9 @@ using Valve.VR;
 
 public class ViRMA_Help : MonoBehaviour
 {
-    
     public ViRMA_Inline inline;
-    //public Canvas labelCanvas;
-    //public GameObject labelPrefab;
     public ViRMA_UiElement mainHelpBtn;
+    public ViRMA_Welcome welcome;
     public bool helpIsActive; 
 
     void Start()
@@ -54,8 +52,9 @@ public class ViRMA_Help : MonoBehaviour
         mainHelpBtn.GetComponent<Button>().onClick.AddListener(ToggleHelp);
         //var helpbtnCanvas = mainHelpBtn.GetComponentInParent<Canvas>();
         inline.SetInline(mainHelpBtn,new Vector3(-80,60,0),"Click here to get a little more help!"/* ,helpbtnCanvas */);
-
     }
+
+
 
     void ToggleHelp(){
         helpIsActive = !helpIsActive;
