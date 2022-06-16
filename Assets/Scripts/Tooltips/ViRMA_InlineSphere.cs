@@ -7,10 +7,9 @@ using TMPro;
 
 public class ViRMA_InlineSphere : MonoBehaviour
 {
-    public bool showLabel = false;
+/*     public bool showLabel = false;
     private Collider col;
     public GameObject inlineSpherePrefab;
-    //private GameObject labelRef;
     private Camera camera;
 
     void Start()
@@ -26,16 +25,17 @@ public class ViRMA_InlineSphere : MonoBehaviour
             labelRef.GetComponent<TextMeshPro>().color = new Color32(255, 255, 255, 0);
         } */
         //Debug.Log("in Glowsphere, checking isHovering? = " + );
-    }
+    //}
 
     /*New makessphere for 2D context add localscale and gameobject instead of UI-element*/
-    public GameObject MakeSphere(GameObject newGlowFolder, GameObject newUiElement,Vector3 scaleOffset){
+/*     public GameObject MakeSphere(GameObject newGlowFolder,Vector3 scaleOffset){
         GameObject newInlineSphere = Instantiate(inlineSpherePrefab, newGlowFolder.transform.position, Quaternion.identity);
+        
         newInlineSphere.transform.parent = newGlowFolder.transform;
+
         newInlineSphere.transform.localPosition = new Vector3(0, 0, 0);
         newInlineSphere.transform.Rotate(0, 90, 0);
         newInlineSphere.transform.localScale = scaleOffset;
-        //labelRef = newLabel;
         col = newInlineSphere.GetComponent<Collider>();
         return newInlineSphere;
     }
@@ -45,7 +45,6 @@ public class ViRMA_InlineSphere : MonoBehaviour
         newInlineSphere.transform.parent = newGlowFolder.transform;
         newInlineSphere.transform.localPosition = new Vector3(0, 0, 0);
         newInlineSphere.transform.Rotate(0, 90, 0);
-        //labelRef = newLabel;
         col = newInlineSphere.GetComponent<Collider>();
         return newInlineSphere;
     }
@@ -59,11 +58,5 @@ public class ViRMA_InlineSphere : MonoBehaviour
         } else {
             showLabel = false;
         }
-    }
-
-    /* void OnTriggerEnter(Collider col){
-     if(col.GetComponent<ViRMA_Drumstick>())
-     {
-        Debug.Log("Sphere colliding with drumsticks!");
-     } */
+    } */
  }

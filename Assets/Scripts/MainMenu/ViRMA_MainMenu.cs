@@ -740,7 +740,7 @@ public class ViRMA_MainMenu : MonoBehaviour
             {
                 ViRMA_UiElement uielement = customMenuBtn.GetComponent<ViRMA_UiElement>();
                 uielement.GenerateBtnDefaults(ViRMA_Colors.grey, Color.white);
-                globals.help.inline.SetInline(uielement,new Vector3(50,0,0), "browse some positions!");
+                globals.help.inline.SetInline(uielement,new Vector3(50,0,0), "browse some positions!",new Vector3(2,2,2));
             }
             if (customMenuBtn.name == "TimeBackBtn")
             {

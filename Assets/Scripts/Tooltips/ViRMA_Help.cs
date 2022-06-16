@@ -13,6 +13,7 @@ public class ViRMA_Help : MonoBehaviour
     public ViRMA_Welcome welcome;
     public ViRMA_ActionSet_Explainer actionSetExplainer;
     public bool helpIsActive; 
+    public SteamVR_Action_Vibration vibration;
 
     void Start()
     {
@@ -52,24 +53,24 @@ public class ViRMA_Help : MonoBehaviour
     {
         mainHelpBtn.GetComponent<Button>().onClick.AddListener(ToggleHelp);
         //var helpbtnCanvas = mainHelpBtn.GetComponentInParent<Canvas>();
-        inline.SetInline(mainHelpBtn,new Vector3(-80,60,0),"Click here to get a little more help!"/* ,helpbtnCanvas */);
+        inline.SetInline(mainHelpBtn,new Vector3(-80,60,0),"Click here to get a little more help!",new Vector3(2,2,2));
     }
-
 
     void ToggleHelp(){
         helpIsActive = !helpIsActive;
         mainHelpBtn.Toggle(helpIsActive);
         if (helpIsActive){
             mainHelpBtn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Help ON";
+            Pulse(0.25f,150,75,SteamVR_Input_Sources.Any);
         } else {
             mainHelpBtn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Help OFF";
         }
     }
 
-    /* public void TogglePocketGuide(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
-    {
-       Debug.Log("assigned the method to btn push!");
-    } */
+    private void Pulse(float duration, float frequency, float amplitute, SteamVR_Input_Sources source){
+        vibration.Execute(0,duration,frequency,amplitute,source);
+    }
+
 
 }
 

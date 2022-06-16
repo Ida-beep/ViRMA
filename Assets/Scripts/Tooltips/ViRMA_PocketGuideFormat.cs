@@ -23,7 +23,6 @@ public class ViRMA_PocketGuideFormat : MonoBehaviour
         // Specify text-field of each gameobject
         textField.GetComponent<TMPro.TextMeshProUGUI>().text = newInstruction;
         titleField.GetComponent<TMPro.TextMeshProUGUI>().text = newTitle;
-        //Debug.Log("title = " + newTitle + " , and instruction is = " + newInstruction);
     }
 
     public void SetVideo(UnityEngine.Video.VideoClip newVideoPath, UnityEngine.Video.VideoPlayer vp){

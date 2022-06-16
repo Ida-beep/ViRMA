@@ -5,34 +5,33 @@ using TMPro;
 
 public class ViRMA_Label : MonoBehaviour
 {
-    private string _description;
+/*     private string _description;
     private Vector3 descriptionPosition;
     private GameObject label = null;
     public GameObject labelPrefab;
-    //public GameObject reusableLabel;
+    private TMPro.TextMeshProUGUI reusableLabel;
 
-    public GameObject Label{
-        get {
-            if(label==null){
-                label = GetComponent<GameObject>();
-                return label;
-            }
-            return null; 
-        }
-        set {label = value; }
+    public void Awake(){
+        reusableLabel = gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        Debug.Log(reusableLabel.text);
     }
 
-    public void MakeLabel(GameObject newInlineFolder,Vector3 newDescriptionPosition, string newDescription){
+    void Update(){
+    }
+
+    /*MakeLabel using Prefab*/
+    /* public void MakeLabel(GameObject newInlineFolder,Vector3 newDescriptionPosition, string newDescription, Vector3 textScale){
         GameObject newLabel = Instantiate(labelPrefab, newDescriptionPosition, Quaternion.identity);
         newLabel.transform.parent = newInlineFolder.transform;
-        newLabel.transform.localPosition = new Vector3(40, 0, 0);
-        newLabel.transform.localScale = new Vector3(2, 2, 2);
+        newLabel.transform.localPosition = new Vector3(0, 0, 0); // 40 0 0 
+        newLabel.transform.localScale = textScale;
         newLabel.GetComponent<TextMeshPro>().text = newDescription;
         //return newLabel;
-    }
+    } */
 
-    /* public void MakeLabel(GameObject newInlineFolder,Vector3 newDescriptionPosition, string newDescription){
-        reusableLabel.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = newDescription;
+    /*MakeLabel using reusable TextMeshPro*/
+    /* public void FetchLabel(GameObject newInlineFolder,Vector3 newDescriptionPosition, string newDescription, Vector3 textScale){
+        reusableLabel.text = newDescription;
         //reusableLabel.transform.parent = newInlineFolder.transform;
         reusableLabel.transform.localPosition = new Vector3(40, 0, 0);
     } */

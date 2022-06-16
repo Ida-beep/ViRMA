@@ -48,5 +48,13 @@ namespace Valve.VR
                 return SteamVR_Actions.menuInteraction_OpenClosePocketGuide;
             }
         }
+        
+        public virtual SteamVR_Action_Vibration HelpOnOff
+        {
+            get
+            {
+                return SteamVR_Actions.menuInteraction_HelpOnOff;
+            }
+        }
     }
 }

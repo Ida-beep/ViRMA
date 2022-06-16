@@ -266,7 +266,7 @@ public class ViRMA_VizController : MonoBehaviour
     }
 
     private void SetInlineHelp(){
-        globals.help.inline.SetInline(cellsandAxesWrapper,new Vector3(0,0,0),new Vector3(4,4,4),"Welcome to the VIzController");
+        globals.help.inline.SetInline(gameObject,new Vector3(0,0,0),new Vector3(4,4,4),"Welcome to the VIzController", new Vector3(0.25f,0.25f,0.25f));
     }
 
     private IEnumerator GenerateAxesFromLabels(Query submittedQuery)

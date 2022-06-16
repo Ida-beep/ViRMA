@@ -34,6 +34,7 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
     public SteamVR_Action_Boolean menuInteraction_MenuControl;
     public SteamVR_Action_Vector2 menuInteraction_Scroll;
     public SteamVR_Action_Boolean menuInteraction_OpenClose;
+    public SteamVR_Action_Vibration menuInteraction_HelpOnOff; 
 
     // viz actions
     public SteamVR_ActionSet vizNavActions;

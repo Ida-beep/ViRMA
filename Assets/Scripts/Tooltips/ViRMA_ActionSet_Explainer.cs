@@ -44,10 +44,12 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     void Update()
     {
         CheckIsLookingDown();
-        if(playerIsLookingDown){
+        if(playerIsLookingDown && !showPocketGuide){
             ActivateActionSetExplainer();
-        } else if (!playerIsLookingDown){
+            Debug.Log("Shoudl ACTIVATE");
+        } else if (!playerIsLookingDown || showPocketGuide){
             DeactivateActionSetExplainer();
+            Debug.Log("Shoudl deactivate");
         }
         SetDynamicActionDetails();
     }
@@ -86,20 +88,20 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     void fadeOut(){
         if (canvas_right != null && canvas_left != null){
             if(fadeInOutTime > 0){
-                fadeInOutTime -= Time.deltaTime * 4;
+                fadeInOutTime -= Time.deltaTime * 8;
                 canvas_right.GetComponent<CanvasGroup>().alpha = fadeInOutTime;
                 canvas_left.GetComponent<CanvasGroup>().alpha = fadeInOutTime;
             }
         }
     }
 
-    void SetupTextBoxBtn(){
+    /* void SetupTextBoxBtn(){
         controllerHelpBtn.GetComponent<Button>().onClick.AddListener(ToggleTextBox);
-    }
+    } */
 
-    void ToggleTextBox(){
+    /* void ToggleTextBox(){
         showPocketGuide = !showPocketGuide;
-    }
+    } */
 
     public void TogglePocketGuide(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {

@@ -90,6 +90,10 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/MenuInteraction/out/HelpOnOff",
+      "type": "vibration"
+    },
+    {
       "name": "/actions/DimExplorer/in/Select",
       "type": "boolean"
     },

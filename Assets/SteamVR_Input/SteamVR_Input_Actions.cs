@@ -59,6 +59,8 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_menuInteraction_OpenClosePocketGuide;
         
+        private static SteamVR_Action_Vibration p_menuInteraction_HelpOnOff;
+        
         private static SteamVR_Action_Boolean p_dimExplorer_Select;
         
         private static SteamVR_Action_Boolean p_dimExplorer_Scroll;
@@ -239,6 +241,14 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Vibration menuInteraction_HelpOnOff
+        {
+            get
+            {
+                return SteamVR_Actions.p_menuInteraction_HelpOnOff.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
         public static SteamVR_Action_Boolean dimExplorer_Select
         {
             get
@@ -311,6 +321,7 @@ namespace Valve.VR
                     SteamVR_Actions.menuInteraction_MenuControl,
                     SteamVR_Actions.menuInteraction_Scroll,
                     SteamVR_Actions.menuInteraction_OpenClosePocketGuide,
+                    SteamVR_Actions.menuInteraction_HelpOnOff,
                     SteamVR_Actions.dimExplorer_Select,
                     SteamVR_Actions.dimExplorer_Scroll,
                     SteamVR_Actions.timeline_Select,
@@ -345,9 +356,11 @@ namespace Valve.VR
                     SteamVR_Actions.timeline_Back,
                     SteamVR_Actions.help_Close};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.menuInteraction_HelpOnOff};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.menuInteraction_HelpOnOff};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
                     SteamVR_Actions.default_Pose};
             Valve.VR.SteamVR_Input.actionsBoolean = new Valve.VR.SteamVR_Action_Boolean[] {
@@ -429,6 +442,7 @@ namespace Valve.VR
             SteamVR_Actions.p_menuInteraction_MenuControl = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/MenuInteraction/in/MenuControl")));
             SteamVR_Actions.p_menuInteraction_Scroll = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/MenuInteraction/in/Scroll")));
             SteamVR_Actions.p_menuInteraction_OpenClosePocketGuide = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/MenuInteraction/in/OpenClosePocketGuide")));
+            SteamVR_Actions.p_menuInteraction_HelpOnOff = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/MenuInteraction/out/HelpOnOff")));
             SteamVR_Actions.p_dimExplorer_Select = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/DimExplorer/in/Select")));
             SteamVR_Actions.p_dimExplorer_Scroll = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/DimExplorer/in/Scroll")));
             SteamVR_Actions.p_timeline_Select = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Timeline/in/Select")));
