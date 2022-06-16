@@ -150,7 +150,7 @@ public class ViRMA_PocketGuide : MonoBehaviour
             if(fadeInOutTime > 0){
                 fadeInOutTime -= Time.deltaTime * 4;
                 canvas.GetComponent<CanvasGroup>().alpha = fadeInOutTime;
-                video.transform.localPosition += new Vector3(999,999,999);
+                video.transform.localPosition += new Vector3(9999999,9999999,9999999);
             }
         }
     }

@@ -28,7 +28,19 @@ public class ViRMA_InlineSphere : MonoBehaviour
         //Debug.Log("in Glowsphere, checking isHovering? = " + );
     }
 
-    public GameObject MakeSphere(GameObject newGlowFolder, ViRMA_UiElement newUiElement /* GameObject newLabel */){
+    /*New makessphere for 2D context add localscale and gameobject instead of UI-element*/
+    public GameObject MakeSphere(GameObject newGlowFolder, GameObject newUiElement,Vector3 scaleOffset){
+        GameObject newInlineSphere = Instantiate(inlineSpherePrefab, newGlowFolder.transform.position, Quaternion.identity);
+        newInlineSphere.transform.parent = newGlowFolder.transform;
+        newInlineSphere.transform.localPosition = new Vector3(0, 0, 0);
+        newInlineSphere.transform.Rotate(0, 90, 0);
+        newInlineSphere.transform.localScale = scaleOffset;
+        //labelRef = newLabel;
+        col = newInlineSphere.GetComponent<Collider>();
+        return newInlineSphere;
+    }
+
+    public GameObject MakeSphere(GameObject newGlowFolder, ViRMA_UiElement newUiElement){
         GameObject newInlineSphere = Instantiate(inlineSpherePrefab, newUiElement.transform.position, Quaternion.identity);
         newInlineSphere.transform.parent = newGlowFolder.transform;
         newInlineSphere.transform.localPosition = new Vector3(0, 0, 0);

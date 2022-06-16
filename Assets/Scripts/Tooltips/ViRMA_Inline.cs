@@ -27,16 +27,32 @@ public class ViRMA_Inline : MonoBehaviour
         } */
     }
 
-    public void SetInline(ViRMA_UiElement newUiElement, Vector3 positionOffset, string newDescription){
+        /*New version of SetInline, still testing state: trying to add GO as parent instead of UI element
+    + make vector3 the actual position rather than attach position to parent
+    + scale offset is introduced*/
+    public void SetInline(GameObject inlineParent, Vector3 positionOffset, Vector3 scaleOffset, string newDescription){
+        var newInlineFolder = new GameObject("InlineHelpItem");
+        
+        label.MakeLabel(newInlineFolder, positionOffset, newDescription);
+        testSphere = sphere.MakeSphere(newInlineFolder,inlineParent,scaleOffset);
+
+        newInlineFolder.transform.parent = inlineParent.transform;
+        newInlineFolder.transform.localPosition = positionOffset; // moves the entire folder off to one side, should be parametized
+
+        //newInlineFolder.transform.localScale = scaleOffset;
+    }
+
+
+    public void SetInline(ViRMA_UiElement inlineParent, Vector3 positionOffset, string newDescription){
         var newInlineFolder = new GameObject("InlineHelpItem");
         //allInlineHelp.transform.parent = newInlineFolder.transform;
-        /* Debug.Log(newUiElement.highlighting); */
-        newInlineFolder.transform.parent = newUiElement.transform;
+        newInlineFolder.transform.parent = inlineParent.transform;
         newInlineFolder.transform.localScale = new Vector3(1, 1, 1);
         newInlineFolder.transform.localPosition = positionOffset; // moves the entire folder off to one side, should be parametized
         
         label.MakeLabel(newInlineFolder, positionOffset, newDescription);
-        testSphere = sphere.MakeSphere(newInlineFolder,newUiElement /* newLabel */);
+        testSphere = sphere.MakeSphere(newInlineFolder, inlineParent);
+
     }
 
 

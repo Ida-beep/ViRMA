@@ -264,6 +264,11 @@ public class ViRMA_VizController : MonoBehaviour
             }
         }   
     }
+
+    private void SetInlineHelp(){
+        globals.help.inline.SetInline(cellsandAxesWrapper,new Vector3(0,0,0),new Vector3(4,4,4),"Welcome to the VIzController");
+    }
+
     private IEnumerator GenerateAxesFromLabels(Query submittedQuery)
     {
         activeAxesLabels = new AxesLabels();
@@ -490,7 +495,8 @@ public class ViRMA_VizController : MonoBehaviour
                 axisZLine.startWidth = axisLineWidth;
                 axisZLine.endWidth = axisLineWidth;
             }
-        }           
+        }
+        SetInlineHelp();          
     }
     private void CalculateCellsAndAxesBounds()
     {

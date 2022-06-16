@@ -9,7 +9,7 @@ public class ViRMA_Label : MonoBehaviour
     private Vector3 descriptionPosition;
     private GameObject label = null;
     public GameObject labelPrefab;
-    public GameObject reusableLabel;
+    //public GameObject reusableLabel;
 
     public GameObject Label{
         get {

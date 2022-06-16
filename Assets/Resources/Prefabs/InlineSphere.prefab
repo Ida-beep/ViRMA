@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bd0388bc80e1b4d9cce2e41e52145e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  help: {fileID: 0}
   isColliding: 0
 --- !u!54 &2097637304840790542
 Rigidbody:
@@ -450,7 +451,7 @@ RectTransform:
   m_GameObject: {fileID: 9023068675173351018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.45816478, y: 1.123421, z: 1.123421}
+  m_LocalScale: {x: -0.5134653, y: 1.2590178, z: 1.2590178}
   m_Children: []
   m_Father: {fileID: 6804699900204740329}
   m_RootOrder: 0
@@ -487,7 +488,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6b78883aec7f3341a813676a5f4b81b, type: 2}
+  - {fileID: 2100000, guid: b15075984813abe4c818ffd50a1f4ce7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -594,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bd0388bc80e1b4d9cce2e41e52145e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  help: {fileID: 0}
   isColliding: 0
 --- !u!114 &3238000763064180801
 MonoBehaviour:
