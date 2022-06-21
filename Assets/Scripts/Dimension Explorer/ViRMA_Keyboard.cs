@@ -86,12 +86,13 @@ public class ViRMA_Keyboard : MonoBehaviour
             {
                 bgCol = ViRMA_Colors.flatOrange;
                 textCol = Color.white;
+                globals.help.magnifier.AddButton(virmaBtn,"Delete Search");
             }
             else if (key.name == "CLOSE")
             {
                 bgCol = new Color32(192, 57, 43, 255);
                 textCol = Color.white;
-                globals.help.inline.SetInline(virmaBtn, new Vector3(50,0,0), "Close search and view browsing state", new Vector3(2,2,2));
+                globals.help.magnifier.AddButton(virmaBtn,"Close search \n view visualisation");
 
             }
             else if (key.name == "BACKSPACE")
@@ -103,6 +104,7 @@ public class ViRMA_Keyboard : MonoBehaviour
             {
                 bgCol = ViRMA_Colors.grey;
                 textCol = Color.white;
+                globals.help.magnifier.AddButton(virmaBtn,"Reposition Keyboard");
             }
             else if (key.name == "SUBMIT")
             {

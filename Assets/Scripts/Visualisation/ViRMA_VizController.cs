@@ -265,10 +265,6 @@ public class ViRMA_VizController : MonoBehaviour
         }   
     }
 
-    private void SetInlineHelp(){
-        globals.help.inline.SetInline(gameObject,new Vector3(0,0,0),new Vector3(4,4,4),"Welcome to the VIzController", new Vector3(0.25f,0.25f,0.25f));
-    }
-
     private IEnumerator GenerateAxesFromLabels(Query submittedQuery)
     {
         activeAxesLabels = new AxesLabels();
@@ -369,6 +365,7 @@ public class ViRMA_VizController : MonoBehaviour
                     axisXPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisId = activeAxesLabels.X.Id;
                     axisXPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisLabel = activeAxesLabels.X.Label;
                     axisXPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisType = activeAxesLabels.X.Type;
+                    globals.help.magnifier.AddButton(axisXPointRollUp,"Click here to widen your search");
                 }
             }
 
@@ -401,6 +398,7 @@ public class ViRMA_VizController : MonoBehaviour
                 axisYPoint.transform.parent = cellsandAxesWrapper.transform;
                 axisYPoint.AddComponent<ViRMA_AxisPoint>().y = true;
 
+
                 // apply metadata to axis point
                 ViRMA_AxisPoint axisPoint = axisYPoint.GetComponent<ViRMA_AxisPoint>();
                 axisPoint.axisId = activeAxesLabels.Y.Id;
@@ -425,6 +423,7 @@ public class ViRMA_VizController : MonoBehaviour
                     axisYPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisId = activeAxesLabels.Y.Id;
                     axisYPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisLabel = activeAxesLabels.Y.Label;
                     axisYPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisType = activeAxesLabels.Y.Type;
+                    globals.help.magnifier.AddButton(axisYPointRollUp,"Click here to widen your search");
                 }
             }
 
@@ -456,6 +455,7 @@ public class ViRMA_VizController : MonoBehaviour
                 axisZPoint.transform.localScale = Vector3.one * 0.5f;
                 axisZPoint.transform.parent = cellsandAxesWrapper.transform;
                 axisZPoint.AddComponent<ViRMA_AxisPoint>().z = true;
+                
 
                 // apply metadata to axis point
                 ViRMA_AxisPoint axisPoint = axisZPoint.GetComponent<ViRMA_AxisPoint>();
@@ -481,6 +481,7 @@ public class ViRMA_VizController : MonoBehaviour
                     axisZPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisId = activeAxesLabels.Z.Id;
                     axisZPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisLabel = activeAxesLabels.Z.Label;
                     axisZPointRollUp.GetComponent<ViRMA_RollUpPoint>().axisType = activeAxesLabels.Z.Type;
+                    globals.help.magnifier.AddButton(axisZPointRollUp,"Click here to widen your search");
                 }
             }
 
@@ -495,8 +496,7 @@ public class ViRMA_VizController : MonoBehaviour
                 axisZLine.startWidth = axisLineWidth;
                 axisZLine.endWidth = axisLineWidth;
             }
-        }
-        SetInlineHelp();          
+        }         
     }
     private void CalculateCellsAndAxesBounds()
     {

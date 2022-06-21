@@ -28,7 +28,7 @@ public class ViRMA_RollUpPoint : MonoBehaviour
     private void Awake()
     {
         globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
-
+        globals.help.magnifier.HideMagnifier();
         gameObject.AddComponent<BoxCollider>();
         Destroy(GetComponent<SphereCollider>());
 
@@ -105,6 +105,7 @@ public class ViRMA_RollUpPoint : MonoBehaviour
 
             globals.ToggleControllerFade(triggeredCol.GetComponent<ViRMA_Drumstick>().hand, true);
         }
+        globals.help.magnifier.TellMagnifier(gameObject);
     }
 
     private void OnTriggerStay(Collider triggeredCol)
@@ -143,6 +144,7 @@ public class ViRMA_RollUpPoint : MonoBehaviour
 
             globals.ToggleControllerFade(triggeredCol.GetComponent<ViRMA_Drumstick>().hand, false);
         }
+        globals.help.magnifier.HideMagnifier();
     }
 
     private void LoadRollUpLabelAndCollider()

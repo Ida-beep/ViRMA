@@ -34,14 +34,14 @@ public class ViRMA_PocketGuide : MonoBehaviour
     [Range(-360.0f,360.0f)]
     public float zrotateBy = 180f;//180
     //public Camera camera;
-    public bool showToolTips = false;
+    //public bool showToolTips = false;
     [Range(-1.0f,1.0f)]
     public float xPosition = 0.0f;
     [Range(-1.0f,1.0f)]
     public float yPosition = 0.0f;
     [Range(-1.0f,1.0f)]
     public float zPosition = 0.0f;
-    public bool helpActive = false;
+    //public bool helpActive = false;
     public UnityEngine.Video.VideoClip mainMenu;
     public UnityEngine.Video.VideoClip keyboard;
     public UnityEngine.Video.VideoClip dimEx;
@@ -79,22 +79,22 @@ public class ViRMA_PocketGuide : MonoBehaviour
             canvas.transform.rotation = controller.rotation * Quaternion.Euler(xrotateBy,yrotateBy,zrotateBy);
             // Check state of system
             if(globals.timeline.timelineLoaded){
-                format.SetText("Cell Content","Here you can see all images sorted by time");
+                format.SetText("Cell Content","Browse images found inside your chosen subcategory");
                 format.SetVideo(cellContent,vp);
             } else if (globals.dimExplorer.dimensionExpLorerLoaded && !tagIsProjected){
-                format.SetText("Dimension Explorer","These are your search results, pick one and apply to an axis");
+                format.SetText("Dimension Explorer","These are your search results. Hover and click 'A' to apply as a filter");
                 format.SetVideo(dimEx,vp);
             } else if (globals.dimExplorer.dimensionExpLorerLoaded) {
                 format.SetText("Closing down search","Click the red button to exit your search and browse the visualisation");
                 format.SetVideo(closeSearch,vp);
             } else if (globals.dimExplorer.dimExKeyboard.keyboardLoaded){
-                format.SetText("Keyboard","Type in something you want to search for");
+                format.SetText("Keyboard","Type in whole or partial words to search. Click the green button to confirm");
                 format.SetVideo(keyboard,vp);
             } else if (globals.vizController.vizFullyLoaded){
-                format.SetText("Visualisation","Explore your search and how it relates to other searches");
+                format.SetText("Visualisation","Explore the content of subcategories, and how they overlap in the visualisation");
                 format.SetVideo(browsingState,vp);
             } else {
-                format.SetText("Main Menu","Click on B to display the main menu, where you can search for various tags");
+                format.SetText("Main Menu","Reach to Hover. Choose between Tags, Time, Location. You can also reposition the menu");
                 format.SetVideo(mainMenu,vp);  
             }       
     }

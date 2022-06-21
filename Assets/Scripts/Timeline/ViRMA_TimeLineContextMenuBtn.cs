@@ -35,6 +35,7 @@ public class ViRMA_TimeLineContextMenuBtn : MonoBehaviour
             innerBgRend.SetPropertyBlock(innerBgPropBlock);
             textMesh.color = ViRMA_Colors.axisDarkBlue;
         }
+        globals.help.magnifier.TellMagnifier(gameObject);
     }
     private void OnTriggerExit(Collider triggeredCol)
     {
@@ -50,6 +51,7 @@ public class ViRMA_TimeLineContextMenuBtn : MonoBehaviour
             innerBgRend.SetPropertyBlock(innerBgPropBlock);
             textMesh.color = Color.white;
         }
+        globals.help.magnifier.HideMagnifier();
     }
     public void LoadTimelineContextMenuBtn(string btnName, GameObject timelineChild)
     {

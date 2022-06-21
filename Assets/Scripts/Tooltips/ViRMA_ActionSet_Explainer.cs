@@ -27,30 +27,40 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     public GameObject triggerRightLine;
     public GameObject triggerLeft;
     public GameObject triggerRight;
+    public GameObject A_leftLine;
+    public GameObject A_rightLine;
     public GameObject BLeft;
     public GameObject Bright;
     public GameObject ALeft;
     public GameObject ARight;
+    public GameObject pocketGuideEx;
+    public GameObject pocketGuideEx_line;
+
+    private float firstTimeLookingDown = 0.0f;
+    private Animation glowAnimation;
 
     void Start()
     {
         globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
-        //SetupTextBoxBtn();
         canvas_right.GetComponent<CanvasGroup>().alpha = 0;
         canvas_left.GetComponent<CanvasGroup>().alpha = 0;
-        SetDefaultActionDetails();
+        SetWelcomeActions();
     }
 
     void Update()
     {
+        if(!help.welcome.active){
+            SetDefaultActionDetails();
+        }
         CheckIsLookingDown();
         if(playerIsLookingDown && !showPocketGuide){
             ActivateActionSetExplainer();
-            Debug.Log("Shoudl ACTIVATE");
         } else if (!playerIsLookingDown || showPocketGuide){
             DeactivateActionSetExplainer();
-            Debug.Log("Shoudl deactivate");
+            //Debug.Log("Shoudl deactivate");
         }
+
+
         SetDynamicActionDetails();
     }
 
@@ -95,13 +105,15 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
         }
     }
 
-    /* void SetupTextBoxBtn(){
-        controllerHelpBtn.GetComponent<Button>().onClick.AddListener(ToggleTextBox);
-    } */
+    public void ExNext(SteamVR_Action_Boolean action, SteamVR_Input_Sources source){
+        help.welcome.PlayNextVideo();
+        //Debug.Log("Called Next");
+    }
 
-    /* void ToggleTextBox(){
-        showPocketGuide = !showPocketGuide;
-    } */
+    public void ExBack(SteamVR_Action_Boolean action, SteamVR_Input_Sources source){
+        help.welcome.PlayPreviousVideo();
+        //Debug.Log("Called Back");
+    }
 
     public void TogglePocketGuide(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
@@ -109,7 +121,14 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     }
 
 
-
+    void SetWelcomeActions(){
+        BLeft.GetComponent<TMPro.TextMeshProUGUI>().text = "Back";
+        Bright.GetComponent<TMPro.TextMeshProUGUI>().text = "Next";
+        ALeft.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+        ARight.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+        A_leftLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+        A_rightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+    }
 
     void SetDefaultActionDetails(){
         ALeft.GetComponent<TMPro.TextMeshProUGUI>().text = "Select";
@@ -120,9 +139,12 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
         triggerRight.GetComponent<TMPro.TextMeshProUGUI>().text = " ";
         triggerLeftLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
         triggerRightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+        A_leftLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
+        A_rightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
     }
 
     void SetDynamicActionDetails(){
+
         if (!globals.dimExplorer.dimExKeyboard.keyboardLoaded)
         {
             triggerLeft.GetComponent<TMPro.TextMeshProUGUI>().text = " ";

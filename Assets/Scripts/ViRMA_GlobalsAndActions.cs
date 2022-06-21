@@ -54,9 +54,10 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
     public SteamVR_Action_Boolean timeline_Scroll;
     public SteamVR_Action_Boolean timeline_Back;
 
-    // help actions
-    public SteamVR_ActionSet helpActions;
-    public SteamVR_Action_Boolean help_Close;
+    // welcome actions
+    public SteamVR_ActionSet welcomeActions;
+    public SteamVR_Action_Boolean welcome_Back;
+    public SteamVR_Action_Boolean welcome_Next;
 
     private void Awake()
     {
@@ -126,9 +127,10 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         timeline_Scroll = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Timeline/in/Scroll");
         timeline_Back = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Timeline/in/Back");
 
-        //help action set
-        helpActions = SteamVR_Input.GetActionSet("Help");
-        help_Close = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Help/in/Close");
+        //welcome action set
+        welcomeActions = SteamVR_Input.GetActionSet("Welcome");
+        welcome_Back = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Welcome/in/Back");
+        welcome_Next = SteamVR_Input.GetActionFromPath<SteamVR_Action_Boolean>("/actions/Welcome/in/Next");
     }
 
     private void AssignAllCustomActions()
@@ -153,8 +155,11 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
         timeline_Select[SteamVR_Input_Sources.Any].onStateDown += timeline.SubmitContextMenuBtn;
         timeline_Back[SteamVR_Input_Sources.Any].onStateDown += timeline.BackButton;
 
-        //help_Close[SteamVR_Input_Sources.Any].onStateDown += help.welcome.DeactivateWelcome;
+        //welcome interaction
+        welcome_Back[SteamVR_Input_Sources.Any].onStateDown += help.actionSetExplainer.ExBack;
+        welcome_Next[SteamVR_Input_Sources.Any].onStateDown += help.actionSetExplainer.ExNext;
 
+        //help_Close[SteamVR_Input_Sources.Any].onStateDown += help.welcome.DeactivateWelcome;
         // testing
         //menuInteraction_Scroll[SteamVR_Input_Sources.Any].onAxis += mainMenu.TestScroll;
         //vizNav_HardGrip[SteamVR_Input_Sources.Any].onAxis += TestGripAction;
@@ -168,9 +173,6 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
 
     private void ActionActivityController()
     {
-        if(help.welcome.active){
-            helpActions.Activate();
-        }
 
         if (dimExplorer.dimensionExpLorerLoaded)
         {
@@ -201,8 +203,15 @@ public class ViRMA_GlobalsAndActions : MonoBehaviour
             timelineActions.Deactivate();
         }
 
-        menuInteractionActions.Activate();
-        //Debug.Log("help is active? : " + helpActions.IsActive() + ", and main menu is ...:" +  menuInteractionActions.IsActive());
+        if(help.welcome.active){ // remember to set to inactive when onboarding is over
+            menuInteractionActions.Deactivate();
+            welcomeActions.Activate();
+            //Debug.Log("welcome actions are active");
+        } else if (help.welcome.lastVideoPlayed) {
+            menuInteractionActions.Activate();
+            welcomeActions.Deactivate();
+            //Debug.Log("main menu actions are active");
+        }
 
 
         // debugging

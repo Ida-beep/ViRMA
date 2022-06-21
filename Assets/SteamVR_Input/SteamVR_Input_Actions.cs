@@ -71,7 +71,9 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_timeline_Back;
         
-        private static SteamVR_Action_Boolean p_help_Close;
+        private static SteamVR_Action_Boolean p_welcome_Next;
+        
+        private static SteamVR_Action_Boolean p_welcome_Back;
         
         public static SteamVR_Action_Boolean default_InteractUI
         {
@@ -289,11 +291,19 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean help_Close
+        public static SteamVR_Action_Boolean welcome_Next
         {
             get
             {
-                return SteamVR_Actions.p_help_Close.GetCopy<SteamVR_Action_Boolean>();
+                return SteamVR_Actions.p_welcome_Next.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean welcome_Back
+        {
+            get
+            {
+                return SteamVR_Actions.p_welcome_Back.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -327,7 +337,8 @@ namespace Valve.VR
                     SteamVR_Actions.timeline_Select,
                     SteamVR_Actions.timeline_Scroll,
                     SteamVR_Actions.timeline_Back,
-                    SteamVR_Actions.help_Close};
+                    SteamVR_Actions.welcome_Next,
+                    SteamVR_Actions.welcome_Back};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -354,7 +365,8 @@ namespace Valve.VR
                     SteamVR_Actions.timeline_Select,
                     SteamVR_Actions.timeline_Scroll,
                     SteamVR_Actions.timeline_Back,
-                    SteamVR_Actions.help_Close};
+                    SteamVR_Actions.welcome_Next,
+                    SteamVR_Actions.welcome_Back};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.menuInteraction_HelpOnOff};
@@ -383,7 +395,8 @@ namespace Valve.VR
                     SteamVR_Actions.timeline_Select,
                     SteamVR_Actions.timeline_Scroll,
                     SteamVR_Actions.timeline_Back,
-                    SteamVR_Actions.help_Close};
+                    SteamVR_Actions.welcome_Next,
+                    SteamVR_Actions.welcome_Back};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.vizNavigation_HardGrip};
@@ -416,7 +429,8 @@ namespace Valve.VR
                     SteamVR_Actions.timeline_Select,
                     SteamVR_Actions.timeline_Scroll,
                     SteamVR_Actions.timeline_Back,
-                    SteamVR_Actions.help_Close};
+                    SteamVR_Actions.welcome_Next,
+                    SteamVR_Actions.welcome_Back};
         }
         
         private static void PreInitActions()
@@ -448,7 +462,8 @@ namespace Valve.VR
             SteamVR_Actions.p_timeline_Select = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Timeline/in/Select")));
             SteamVR_Actions.p_timeline_Scroll = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Timeline/in/Scroll")));
             SteamVR_Actions.p_timeline_Back = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Timeline/in/Back")));
-            SteamVR_Actions.p_help_Close = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Help/in/Close")));
+            SteamVR_Actions.p_welcome_Next = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Welcome/in/Next")));
+            SteamVR_Actions.p_welcome_Back = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Welcome/in/Back")));
         }
     }
 }

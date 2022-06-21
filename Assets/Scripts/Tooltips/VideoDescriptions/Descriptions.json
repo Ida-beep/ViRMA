@@ -1,0 +1,21 @@
+{
+    "descriptions":
+    [
+      {
+        "name": "Splash Screen",
+        "text": "Welcome. Click 'B' to continue..."
+      },
+      {
+        "name": "Body and Selection",
+        "text": "Reach out your arm to hover items, and select using 'A'"
+      },
+      {
+        "name": "Reposition",
+        "text": "Reposition the menu from the lower right corner"
+      },
+      {
+        "name": "Help",
+        "text": "Toggle help ON/OFF in the lower left corner"
+      }
+    ]
+  }

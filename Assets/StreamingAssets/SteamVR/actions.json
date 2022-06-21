@@ -114,7 +114,11 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/Help/in/Close",
+      "name": "/actions/Welcome/in/Next",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Welcome/in/Back",
       "type": "boolean"
     }
   ],
@@ -140,8 +144,8 @@
       "usage": "single"
     },
     {
-      "name": "/actions/Help",
-      "usage": "single"
+      "name": "/actions/Welcome",
+      "usage": "leftright"
     }
   ],
   "default_bindings": [

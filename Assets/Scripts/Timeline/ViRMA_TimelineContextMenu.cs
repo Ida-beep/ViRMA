@@ -29,11 +29,13 @@ public class ViRMA_TimelineContextMenu : MonoBehaviour
         contextBtn.transform.localPosition = new Vector3(-0.12f, 0, -0.025f);
         contextBtn.transform.localScale = contextBtn.transform.localScale * 0.75f;
         contextBtn.GetComponent<ViRMA_TimeLineContextMenuBtn>().LoadTimelineContextMenuBtn("Context", targetTimelineChild);
+        globals.help.magnifier.AddButton(contextBtn,"View images taken before and after");
 
         GameObject submitBtn = Instantiate(contextMenuBtnPrefab, transform);
         submitBtn.transform.localPosition = new Vector3(0.12f, 0, -0.025f);
         submitBtn.transform.localScale = submitBtn.transform.localScale * 0.75f;
         submitBtn.GetComponent<ViRMA_TimeLineContextMenuBtn>().LoadTimelineContextMenuBtn("Submit", targetTimelineChild);
+        globals.help.magnifier.AddButton(submitBtn,"Currently not working :-)");
     }
 
     private void OnTriggerExit(Collider triggeredCol)

@@ -64,6 +64,7 @@ public class ViRMA_MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Main menu has awoken!");
         // define ViRMA globals script
         globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
 
@@ -118,18 +119,22 @@ public class ViRMA_MainMenu : MonoBehaviour
                 browseFilterOption.GenerateBtnDefaults(ViRMA_Colors.darkBlue, Color.white);
                 browseFilterOption.GetComponent<Button>().onClick.AddListener(() => globals.dimExplorer.dimExKeyboard.ToggleDimExKeyboard(true));
                 browseFilterOption.GetComponent<Button>().onClick.AddListener(() => ToggleMainMenu(false));
+                globals.help.magnifier.AddButton(browseFilterOption,"Search for words");// SIG
+                
             }
 
             if (browseFilterOption.name == "TimeBtn")
             {
                 browseFilterOption.GenerateBtnDefaults(ViRMA_Colors.darkBlue, Color.white);
                 browseFilterOption.GetComponent<Button>().onClick.AddListener(() => ToggleMenuSection(section_timePicker));
+                globals.help.magnifier.AddButton(browseFilterOption,"Filter results by Time");
             }
 
             if (browseFilterOption.name == "LocationsBtn")
             {
                 //browseFilterOption.GenerateBtnDefaults(ViRMA_Colors.darkBlue, Color.white);
                 //browseFilterOption.GetComponent<Button>().onClick.AddListener(() => ToggleMenuSection(section_locationPicker));
+                globals.help.magnifier.AddButton(browseFilterOption,"Currently not working :-)");
             }
         }
     }
@@ -739,12 +744,14 @@ public class ViRMA_MainMenu : MonoBehaviour
             if (customMenuBtn.name == "RepositionBtn")
             {
                 ViRMA_UiElement uielement = customMenuBtn.GetComponent<ViRMA_UiElement>();
+                Debug.Log("Made it to SetupCustome with ui element: " + uielement);
                 uielement.GenerateBtnDefaults(ViRMA_Colors.grey, Color.white);
-                globals.help.inline.SetInline(uielement,new Vector3(50,0,0), "browse some positions!",new Vector3(2,2,2));
+                globals.help.magnifier.AddButton(uielement,"Reposition menu");// SIG
             }
             if (customMenuBtn.name == "TimeBackBtn")
             {
                 customMenuBtn.GetComponent<ViRMA_UiElement>().GenerateBtnDefaults(ViRMA_Colors.flatOrange, Color.white);
+                globals.help.magnifier.AddButton(customMenuBtn.GetComponent<ViRMA_UiElement>(),"Return to Menu");
             }
             /* if (customMenuBtn.name == "MainHelpBtn")
             {
@@ -769,10 +776,12 @@ public class ViRMA_MainMenu : MonoBehaviour
             globals.queryController.buildingQuery.ClearAxis("Y", true);
             globals.queryController.buildingQuery.ClearAxis("Z", true);
             globals.queryController.buildingQuery.ClearFilters();
+            
         }
         if (customMenuBtn.name == "ClearTimesBtn")
         {
             toggledTimeUiElements.Clear();
+    
         }
         if (customMenuBtn.name == "ClearLocationsBtn")
         {

@@ -10,6 +10,7 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 	// SteamVR: used for UI interaction with controller
 	//private ViRMA_GlobalsAndActions globals;
 
+	private ViRMA_GlobalsAndActions globals;
 	public CustomEvents.UnityEventHand onHandClick;
 	protected Hand currentHand;
 	private BoxCollider col;
@@ -43,7 +44,8 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
 	protected virtual void Awake()
 	{
-		//globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
+		globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
+
 		btnBackground = GetComponent<Image>();
 		btnText = GetComponentInChildren<Text>();
 		btnProText = GetComponentInChildren<TMP_Text>();
@@ -88,6 +90,7 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 	{
 		// assign howevered hand as current hand
 		currentHand = hand;
+		globals.help.magnifier.TellMagnifier(gameObject.GetComponent<ViRMA_UiElement>()); // SIG
 
 		// trigger button initial hover state
 		ViRMA_InputModule.instance.HoverBegin(gameObject);
@@ -99,6 +102,8 @@ public class ViRMA_UiElement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 	{
 		// trigger button hover end state
 		ViRMA_InputModule.instance.HoverEnd(gameObject);
+
+		globals.help.magnifier.HideMagnifier();
 
 		// hide controller hint for UI interaction
 		//ControllerButtonHints.HideButtonHint(hand, globals.menuInteraction_Select); // not highlighting any button
