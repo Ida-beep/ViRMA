@@ -8,6 +8,7 @@ using Valve.VR;
 
 public class ViRMA_Help : MonoBehaviour
 {
+    public ViRMA_ArrowTimer arrowTimer;
     public ViRMA_Magnifier magnifier;
     public ViRMA_Inline inline;
     public ViRMA_UiElement mainHelpBtn;

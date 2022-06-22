@@ -22,8 +22,6 @@ public class ViRMA_Welcome : MonoBehaviour
     private string [] textDescriptions;
 
     private int index;
-    public Canvas arrow;
-    public Transform right_controller;
     public bool lastVideoPlayed;
     public TMPro.TextMeshProUGUI animationDescription;
     public TMPro.TextMeshProUGUI headline;
@@ -66,16 +64,16 @@ public class ViRMA_Welcome : MonoBehaviour
     {
         fadeIn();
         checkMainMenuLoaded();
-        UpdateArrowPosition();
+        /* UpdateArrowPosition(); */
     }
 
-    void UpdateArrowPosition(){
+/*     void UpdateArrowPosition(){
         if(active){
             arrow.transform.position = right_controller.position;
         } else {
             arrow.transform.position = new Vector3(999999,999999,999999);
         }
-    }
+    } */
 
     public void PlayNextVideo(){
         index++;
@@ -105,17 +103,16 @@ public class ViRMA_Welcome : MonoBehaviour
         animationDescription.color = new Color(0,0,0,0);
         
         headline.text = $"{index}/10 " + descriptions.descriptions[index].name;
-
-        nextVideo.text = descriptions.descriptions[index+1].name;
-        prevVideo.text = descriptions.descriptions[index-1].name;
-
+        
         if(index+1 >= filesAndText.Length/2){
             nextVideo.text = " ";
-            //index = filesAndText.Length/2;
+        } else {
+            nextVideo.text = descriptions.descriptions[index+1].name;
         }
         if(index-1 < 0){
             prevVideo.text = " ";
-            //index = 0;
+        } else {
+            prevVideo.text = descriptions.descriptions[index-1].name;
         }
     }
 

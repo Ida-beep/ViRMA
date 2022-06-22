@@ -7,19 +7,16 @@ using Valve.VR;
 public class ViRMA_ActionSet_Explainer : MonoBehaviour
 {
     private ViRMA_GlobalsAndActions globals;
-    // Looking down-feature
-    bool playerIsLookingDown = false;
+    public bool playerIsLookingDown = false;
     public Transform headTransform;
     public Transform right_controller;
     public Transform left_controller;
-    // TEST Canvas right and left
     public Canvas canvas_left;
     public Canvas canvas_right;
     [Range(-360.0f,360.0f)]
     public float rotateBy = 200f;
     float fadeInOutTime = 0.0f;
     public GameObject controllerHelpBtn;
-    //public bool controllerHelpbtnActive = false;
     public ViRMA_Help help;
     public bool showPocketGuide;
 
@@ -35,6 +32,7 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
     public GameObject ARight;
     public GameObject pocketGuideEx;
     public GameObject pocketGuideEx_line;
+    public GameObject pocketGuideEx_line_diagonal;
 
     private float firstTimeLookingDown = 0.0f;
     private Animation glowAnimation;
@@ -128,6 +126,9 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
         ARight.GetComponent<TMPro.TextMeshProUGUI>().text = "";
         A_leftLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
         A_rightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+        pocketGuideEx.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+        pocketGuideEx_line.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
+        pocketGuideEx_line_diagonal.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
     }
 
     void SetDefaultActionDetails(){
@@ -141,6 +142,10 @@ public class ViRMA_ActionSet_Explainer : MonoBehaviour
         triggerRightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0,0);
         A_leftLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
         A_rightLine.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
+
+        pocketGuideEx.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
+        pocketGuideEx_line.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
+        pocketGuideEx_line_diagonal.GetComponent<TMPro.TextMeshProUGUI>().color = new Color(0,0,0);
     }
 
     void SetDynamicActionDetails(){
