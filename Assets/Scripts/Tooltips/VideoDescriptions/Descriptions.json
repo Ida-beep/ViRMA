@@ -2,11 +2,15 @@
     "descriptions":
     [
       {
-        "name": "Splash Screen",
+        "name": "Welcome",
         "text": "Welcome. Click 'B' to continue..."
       },
       {
-        "name": "Body and Selection",
+        "name": "Actions",
+        "text": "Look down to view controller details"
+      },
+      {
+        "name": "Selecting",
         "text": "Reach out your arm to hover items, and select using 'A'"
       },
       {
@@ -16,6 +20,31 @@
       {
         "name": "Help",
         "text": "Toggle help ON/OFF in the lower left corner"
+      },
+      {
+        "name": "Filters",
+        "text": "Time, Locations and Tags present different kinds of filters"
+      },
+      {
+        "name": "KeyBoard",
+        "text": "Type in whole or partial words and click search"
+      },
+      {
+        "name": "Tag Selection",
+        "text": "Click 'Trigger' to drag horisontally and vertically"
+      },
+      {
+        "name": "Projecting",
+        "text": "Project a word by choosing 1 axis or more"
+      },
+      {
+        "name": "Visualisation",
+        "text": "Select a contrainer to view the images inside"
+      },
+      {
+        "name": "Begin ViRMA",
+        "text": "Finish tutorial and open menu by pressing 'B'"
       }
+
     ]
   }

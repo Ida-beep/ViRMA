@@ -26,6 +26,9 @@ public class ViRMA_Welcome : MonoBehaviour
     public Transform right_controller;
     public bool lastVideoPlayed;
     public TMPro.TextMeshProUGUI animationDescription;
+    public TMPro.TextMeshProUGUI headline;
+    public TMPro.TextMeshProUGUI prevVideo;
+    public TMPro.TextMeshProUGUI nextVideo;
 
     private float fadeInOutTime = 0.0f;
 
@@ -43,7 +46,7 @@ public class ViRMA_Welcome : MonoBehaviour
         active = true;
         globals = Player.instance.gameObject.GetComponent<ViRMA_GlobalsAndActions>();
         help = globals.help;
-        welcomeText = gameObject.GetComponentInChildren</* RectTransform */Canvas>().GetComponent<RectTransform>();
+        welcomeText = gameObject.GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
         StartPlayingVideo(index);
         animationDescription.color = new Color(0,0,0,0);
         PositionWelcome();
@@ -54,7 +57,6 @@ public class ViRMA_Welcome : MonoBehaviour
 
     void LoadAllVideos(){
         for(int i = 0; i < filesAndText.Length/2;i++){
-            //Debug.Log("index is ? = " + i );
             filesAndText[i,0] = $"Assets/Resources/Video/Clip_{i}.mp4";
             filesAndText[i,1] = $"{i}/10    some description";
         }
@@ -75,44 +77,51 @@ public class ViRMA_Welcome : MonoBehaviour
         }
     }
 
-
     public void PlayNextVideo(){
         index++;
-        Debug.Log("length of array = " + filesAndText.Length);
-        Debug.Log("NEXXXT: index is : " + index );
         if(index < filesAndText.Length/2){  // since it's a double array it's length/2
             StartPlayingVideo(index);
             UpdateDescription(index);
         } else if (index == filesAndText.Length/2){
-            Debug.Log("DEACTIVATE");
             lastVideoPlayed = true;
             DeactivateWelcome();
         }
     }
 
     public void PlayPreviousVideo(){
-        index++;
-        Debug.Log("index is : " + index);
-        if(index > 0){
+        index--;
+        if(index >= 0){
             StartPlayingVideo(index);
             UpdateDescription(index);
+        }
+        if(index < 0){
+            index = 0;
         }
     }
 
     public void UpdateDescription(int index){
-        Debug.Log("index is : " + index);
         fadeInOutTime = 0.0f;
-        animationDescription.text = filesAndText[index,1];
+        animationDescription.text = descriptions.descriptions[index].text;
         animationDescription.color = new Color(0,0,0,0);
-        Debug.Log("text is = " + animationDescription);
+        
+        headline.text = $"{index}/10 " + descriptions.descriptions[index].name;
+
+        nextVideo.text = descriptions.descriptions[index+1].name;
+        prevVideo.text = descriptions.descriptions[index-1].name;
+
+        if(index+1 >= filesAndText.Length/2){
+            nextVideo.text = " ";
+            //index = filesAndText.Length/2;
+        }
+        if(index-1 < 0){
+            prevVideo.text = " ";
+            //index = 0;
+        }
     }
 
     public void StartPlayingVideo(int index){
-        //Debug.Log("index is : " + index);
         test = animationController.GetComponent<UnityEngine.Video.VideoPlayer>();
-        Debug.Log("inside playing meethod index is = " + index);
         test.url = filesAndText[index,0];
-        //Debug.Log("inside playing meethod index is = " + index);
         test.renderMode = UnityEngine.Video.VideoRenderMode.MaterialOverride;
         test.targetMaterialRenderer = GetComponent<Renderer>();
         //test.targetMaterialPro perty = "_MainTex";
@@ -133,7 +142,7 @@ public class ViRMA_Welcome : MonoBehaviour
         Vector3 spawnPos = Player.instance.hmdTransform.position + flattenedVector * 0.5f;
         Vector3 runtimePosition = new Vector3(spawnPos.x, spawnPos.y-200, (spawnPos.z + distanceToPlayer)*-1);
         transform.position = runtimePosition;
-        welcomeText.position = runtimePosition + new Vector3(159.8f,54f,-469f); /* static in front */
+        welcomeText.position = runtimePosition + new Vector3(0f,13f,-469f); /* static in front */
         //welcomeText.position = runtimePosition + new Vector3(spawnPos.x,spawnPos.y,spawnPos.z);
     }
 
